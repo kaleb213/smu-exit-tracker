@@ -1,0 +1,12 @@
+# ============================================================
+#  .htaccess — route clean URLs into index.php
+# ============================================================
+RewriteEngine On
+RewriteBase /smu-exam-tracker/
+
+# If the file/folder really exists (css, js, images), serve it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Everything else → index.php?url=original/path
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]

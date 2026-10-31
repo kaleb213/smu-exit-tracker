@@ -1,0 +1,386 @@
+/* ============================================================
+   SMU AUTH PAGES - v6 ALL-GLASS
+   Targets the REAL markup classes:
+   .auth-shell > .auth-top / .auth-title / .auth-tagline /
+   .auth-card / .auth-features / .auth-footer
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+.auth-body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  color: #f4f1e8;
+  background: linear-gradient(140deg, #06231a 0%, #0b3d2e 55%, #071e16 100%);
+}
+
+/* fixed hero photo behind everything */
+.auth-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: url('../img/hero.jpg') center / cover no-repeat;
+}
+.auth-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(1000px 480px at 14% 16%, rgba(212,175,55,.15), transparent 60%),
+    linear-gradient(135deg, rgba(4,26,19,.87) 0%, rgba(10,61,45,.74) 52%, rgba(3,20,14,.92) 100%);
+}
+
+/* ---------- everything now sits ABOVE the hero ---------- */
+.auth-shell {
+  position: relative;
+  z-index: 1;
+  width: min(1080px, 100% - 40px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 34px 0 22px;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  grid-template-rows: auto auto auto 1fr auto;
+  column-gap: 56px;
+  align-content: center;
+}
+
+/* brand row: glass SMU text logo + university name */
+.auth-top {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 26px;
+}
+.auth-logo {
+  flex: none;
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #f7d774;
+  background: linear-gradient(150deg, rgba(212,175,55,.32), rgba(212,175,55,.08));
+  border: 1.5px solid rgba(212,175,55,.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 10px 26px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.28);
+}
+.auth-uniname {
+  font-size: 17px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+}
+.auth-uniname small {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(247,215,116,.9);
+}
+
+/* left intro column */
+.auth-title {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: end;
+  margin: 0 0 10px;
+  font-size: clamp(28px, 3.6vw, 40px);
+  line-height: 1.14;
+  font-weight: 800;
+  color: #ffffff;
+}
+.auth-tagline {
+  grid-column: 1;
+  grid-row: 3;
+  margin: 0 0 18px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(244,241,232,.82);
+}
+.auth-motto-inline {
+  grid-column: 1;
+  grid-row: 4;
+  align-self: start;
+  margin: 0;
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(247,215,116,.9);
+}
+
+/* feature chips (login page, left column bottom) */
+.auth-features {
+  grid-column: 1;
+  grid-row: 4;
+  align-self: start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.feature svg { width: 21px; height: 21px; flex: none; }
+.f-txt { display: flex; flex-direction: column; }
+.f-txt b { color: #ffffff; font-size: 14px; }
+.f-txt small { color: rgba(244,241,232,.68); font-size: 12.5px; }
+
+/* the glass login card (right column) */
+.auth-card {
+  grid-column: 2;
+  grid-row: 2 / 5;
+  align-self: center;
+  width: 100%;
+  padding: 34px 32px 28px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.075);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  box-shadow: 0 26px 70px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.14);
+}
+.auth-card h2 { margin: 0 0 4px; font-size: 24px; font-weight: 800; color: #ffffff; }
+.auth-card .sub { margin: 0 0 18px; font-size: 13.5px; color: rgba(244,241,232,.72); }
+
+/* glass alerts */
+.auth-card .alert {
+  padding: 11px 14px;
+  border-radius: 11px;
+  font-size: 13.5px;
+  margin: 0 0 14px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.22);
+  color: #f4f1e8;
+}
+.auth-card .alert-error   { background: rgba(220,53,69,.2);   border-color: rgba(220,53,69,.5);  color: #ffd9de; }
+.auth-card .alert-success { background: rgba(25,135,84,.22);  border-color: rgba(25,135,84,.5);  color: #d9f4e5; }
+.auth-card .alert-info    { background: rgba(212,175,55,.14); border-color: rgba(212,175,55,.4); color: #f7e9bd; }
+
+/* glass form */
+.auth-card .form-group { margin-bottom: 16px; }
+.auth-card .form-group label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(247,215,116,.95);
+}
+.auth-card .form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 12px;
+  font-size: 15px;
+  color: #ffffff;
+  background: rgba(255,255,255,.09);
+  border: 1px solid rgba(255,255,255,.24);
+  outline: none;
+  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease;
+}
+.auth-card .form-group input::placeholder { color: rgba(244,241,232,.42); }
+.auth-card .form-group input:focus {
+  border-color: rgba(212,175,55,.75);
+  background: rgba(255,255,255,.13);
+  box-shadow: 0 0 0 4px rgba(212,175,55,.16);
+}
+.auth-card .form-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 2px 0 18px;
+  flex-wrap: wrap;
+}
+.auth-card .remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(244,241,232,.85);
+}
+.auth-card .remember input { width: auto; margin: 0; transform: scale(1.15); accent-color: #d4af37; }
+.auth-card .forgot { font-size: 13px; color: #f7d774; text-decoration: none; }
+.auth-card .forgot:hover { text-decoration: underline; }
+
+.auth-card .btn-primary {
+  width: 100%;
+  padding: 13px 18px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 15.5px;
+  font-weight: 800;
+  letter-spacing: .4px;
+  color: #241b02;
+  background: linear-gradient(135deg, #f2d47e 0%, #d4af37 55%, #b6932b 100%);
+  box-shadow: 0 12px 28px rgba(212,175,55,.32), inset 0 1px 0 rgba(255,255,255,.55);
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+.auth-card .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.05); }
+.auth-card .btn-primary:active { transform: translateY(0); }
+
+.auth-card .auth-alt { margin: 16px 0 0; font-size: 13.5px; color: rgba(244,241,232,.8); }
+.auth-card .auth-note { margin: 10px 0 0; font-size: 12px; line-height: 1.55; color: rgba(244,241,232,.55); }
+.auth-card a { color: #f7d774; text-decoration: none; }
+.auth-card a:hover { text-decoration: underline; }
+
+/* footer */
+.auth-footer {
+  grid-column: 1 / -1;
+  grid-row: 5;
+  align-self: end;
+  margin: 26px 0 0;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(244,241,232,.62);
+}
+.auth-footer b { color: rgba(255,255,255,.85); }
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .auth-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    width: min(560px, 100% - 32px);
+    padding-top: 26px;
+  }
+  .auth-top, .auth-title, .auth-tagline, .auth-motto-inline,
+  .auth-card, .auth-features, .auth-footer { grid-column: 1; grid-row: auto; }
+  .auth-title { margin-top: 6px; }
+  .auth-features { margin-top: 18px; }
+  .auth-footer { margin-top: 24px; }
+}
+@media (max-width: 480px) {
+  .auth-card { padding: 26px 20px 22px; }
+  .auth-title { font-size: 27px; }
+}
+/* SMU v7 crest */
+.auth-logo { width: 92px; height: 92px; padding: 9px; }
+.auth-logo-img { display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35)); }
+.auth-logo-text { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: none; background-clip: border-box; -webkit-background-clip: border-box; color: #e7c66b; font-weight: 800; font-size: 22px; letter-spacing: 2px; }
+.auth-logo-img + .auth-logo-text { display: none; }
+/* SMU v7f crest in auth logo */
+.auth-logo { width: 96px; height: 96px; padding: 0; background: transparent; border: none; box-shadow: none; border-radius: 0; overflow: visible; display: flex; align-items: center; justify-content: center; }
+.auth-logo-img { display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 8px 20px rgba(0,0,0,0.45)); }
+.auth-logo-text { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; border-radius: 50%; background: rgba(255,255,255,.075); border: 1px solid rgba(255,255,255,.18); color: #e7c66b; font-weight: 800; font-size: 26px; letter-spacing: 2px; }
+.auth-logo-img + .auth-logo-text { display: none; }
+
+
+/* ============================================================ */
+/* SMU v18 restore-old-layout */
+/* ============================================================ */
+
+/* ============================================================
+   SMU v18 - RESTORE OLD LAYOUT + LOGO FIX
+   Old v6 side-by-side grid re-asserted with !important (safety),
+   logo image sized inside the badge, duplicate text hidden.
+   ============================================================ */
+
+/* ---- old v6 side-by-side grid (unchanged values, all widths) ---- */
+.auth-shell{
+  position:relative !important; z-index:1 !important;
+  width:min(1080px, 100% - 40px) !important;
+  min-height:100vh !important;
+  margin:0 auto !important; padding:34px 0 22px !important;
+  display:grid !important;
+  grid-template-columns:1.05fr 1fr !important;
+  grid-template-rows:auto auto auto 1fr auto !important;
+  column-gap:56px !important; row-gap:0 !important;
+  align-content:center !important;
+}
+.auth-shell .auth-top     { grid-column:1 / -1 !important; grid-row:1 !important; display:flex !important; align-items:center !important; gap:14px !important; margin-bottom:26px !important; }
+.auth-shell .auth-title   { grid-column:1 !important; grid-row:2 !important; align-self:end !important;   margin:0 0 10px !important; }
+.auth-shell .auth-tagline { grid-column:1 !important; grid-row:3 !important; align-self:start !important; margin:0 0 18px !important; }
+.auth-shell .auth-features{ grid-column:1 !important; grid-row:4 !important; align-self:start !important; margin:0 !important; }
+.auth-shell .auth-card    { grid-column:2 !important; grid-row:2 / 5 !important; align-self:center !important; }
+.auth-shell .auth-footer  { grid-column:1 / -1 !important; grid-row:5 !important; }
+
+/* ---- logo: image fits the glass badge, no duplicate SMU text ---- */
+.auth-shell .auth-logo{ padding:0 !important; gap:0 !important; }
+.auth-shell .auth-logo-img{
+  display:block !important; width:42px !important; height:42px !important;
+  max-width:100% !important; max-height:100% !important;
+  object-fit:contain !important; border-radius:10px;
+}
+.auth-shell .auth-logo .auth-logo-text{ display:none !important; }
+
+/* Prefer the OLD text-only badge instead of the image? Use these two
+   lines instead of the two rules above:
+   .auth-shell .auth-logo-img{ display:none !important; }
+   .auth-shell .auth-logo .auth-logo-text{ display:block !important; }
+*/
+
+
+/* ============================================================ */
+/* SMU v19 login password eye */
+/* ============================================================ */
+
+/* ============================================================
+   SMU v19 - PROFESSIONAL PASSWORD EYE (login)
+   ============================================================ */
+.pw-field{ position:relative; display:block; }
+.pw-field #password{ padding-right:52px !important; }
+.pw-eye{
+  position:absolute; top:50%; right:12px; transform:translateY(-50%);
+  width:34px; height:34px; padding:0;
+  border-radius:10px; cursor:pointer;
+  color:rgba(244,241,232,.62);
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.14);
+  display:flex; align-items:center; justify-content:center;
+  transition:color .18s ease, background .18s ease, border-color .18s ease, transform .12s ease;
+}
+.pw-eye:hover{ color:#f7d774; background:rgba(240,199,94,.12); border-color:rgba(240,199,94,.45); }
+.pw-eye:active{ transform:translateY(-50%) scale(.93); }
+.pw-eye:focus{ outline:none; }
+.pw-eye:focus-visible{ outline:2px solid rgba(240,199,94,.65); outline-offset:2px; }
+.pw-eye svg{ width:19px; height:19px; display:block; }
+.pw-eye .i-eye-off{ display:none; }
+.pw-field.show-pw .i-eye{ display:none; }
+.pw-field.show-pw .i-eye-off{ display:block; }
+.pw-field.show-pw .pw-eye{ color:#f7d774; background:rgba(240,199,94,.15); border-color:rgba(240,199,94,.55); }
+
+
+/* ============================================================ */
+/* SMU v20 login polish */
+/* ============================================================ */
+
+/* ============================================================
+   SMU v20 - LOGIN POLISH: hero overlay + entrance
+   ============================================================ */
+.auth-bg{
+  background-color:#0a1f16;
+  background-image:
+    linear-gradient(105deg, rgba(5,22,15,.9) 0%, rgba(5,22,15,.62) 45%, rgba(7,30,21,.38) 100%),
+    url('../img/hero.jpg');
+  background-size:cover; background-position:center; background-repeat:no-repeat;
+}
+@media (prefers-reduced-motion: no-preference){
+  .auth-top     { animation:smu-rise .5s ease 0s   both; }
+  .auth-title   { animation:smu-rise .5s ease .05s both; }
+  .auth-tagline { animation:smu-rise .5s ease .14s both; }
+  .auth-card    { animation:smu-rise .55s ease .1s  both; }
+  .auth-features{ animation:smu-rise .5s ease .22s both; }
+}
+@keyframes smu-rise{ from{ opacity:0; transform:translateY(16px); } to{ opacity:1; transform:translateY(0); } }
+

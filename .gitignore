@@ -1,0 +1,14 @@
+# Private configuration
+config/config.php
+config/database.php
+config/session_config.php
+.env
+.env.*
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
+database/smu_exit_exam_dump.sql
