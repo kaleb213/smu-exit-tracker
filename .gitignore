@@ -1,0 +1,16 @@
+tests/local_test/*.sqlite
+uploads/*
+!uploads/.htaccess
+
+# Local database configuration
+/app/config/config.php
+
+# Exclude personal profile photos
+/public/uploads/profiles/*.png
+/public/uploads/profiles/*.jpg
+/public/uploads/profiles/*.jpeg
+
+# Never upload user profile photos
+/public/uploads/profiles/*
+!/public/uploads/profiles/.htaccess
+!/public/uploads/profiles/index.html

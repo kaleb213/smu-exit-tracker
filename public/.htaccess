@@ -1,0 +1,15 @@
+# Allow pretty URLs when Apache mod_rewrite is enabled.
+# The system also works without mod_rewrite using index.php/controller/action URLs.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+
+# Block direct access to everything except assets
+<IfModule mod_rewrite.c>
+  RewriteCond %{REQUEST_URI} !/assets/
+  RewriteCond %{REQUEST_URI} !/uploads/profiles/
+  RewriteRule ^(app|database|docs|scripts|tests)/ - [F,L]
+</IfModule>
