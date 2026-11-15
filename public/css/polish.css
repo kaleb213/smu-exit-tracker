@@ -1,0 +1,54 @@
+
+/* ============================================================
+   SMU POLISH - fonts, scrollbar, selection, micro-interactions
+   ============================================================ */
+
+/* ---- typography ---- */
+body, button, input, select, textarea{ font-family:'Inter','Segoe UI',Roboto,Arial,sans-serif; }
+h1,h2,h3,h4,h5,h6,
+.auth-title,.auth-card h2,.auth-uniname{
+  font-family:'Poppins','Segoe UI','Trebuchet MS',Arial,sans-serif;
+  letter-spacing:.2px;
+}
+
+/* ---- dark slim scrollbar + gold selection ---- */
+html{ scrollbar-color:#2f7d5d rgba(255,255,255,.05); scrollbar-width:thin; }
+::-webkit-scrollbar{ width:10px; height:10px; }
+::-webkit-scrollbar-track{ background:rgba(255,255,255,.04); }
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,#3a8a66,#2f7d5d);
+  border-radius:8px; border:2px solid rgba(10,25,18,.6);
+}
+::-webkit-scrollbar-thumb:hover{ background:#f0c75e; }
+::selection{ background:rgba(240,199,94,.85); color:#16241d; }
+
+/* ---- page fade-in ---- */
+@media (prefers-reduced-motion: no-preference){
+  body{ animation:smu-fadein .25s ease both; }
+}
+@keyframes smu-fadein{ from{ opacity:0; } to{ opacity:1; } }
+
+/* ---- button micro-interactions (password eyes excluded) ---- */
+button:not(.pw-eye):not(.smu-eye),
+.btn, a.btn, input[type="submit"], input[type="button"]{
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease, color .15s ease, filter .15s ease;
+}
+button:not(.pw-eye):not(.smu-eye):hover,
+.btn:hover, a.btn:hover,
+input[type="submit"]:hover, input[type="button"]:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 22px rgba(0,0,0,.35);
+}
+button:not(.pw-eye):not(.smu-eye):active,
+.btn:active, a.btn:active,
+input[type="submit"]:active, input[type="button"]:active{
+  transform:translateY(0) scale(.98);
+  box-shadow:0 3px 10px rgba(0,0,0,.3);
+}
+/* ============================================================
+   SMU POLISH v3 - no-hover-line: never underline links on hover
+   ============================================================ */
+a:hover, a:focus, a:active, a:visited:hover{ text-decoration:none !important; }
+.nav-link:hover, .nav-link:focus,
+.nav-tabs a:hover, .nav-tabs a:focus,
+[role="tab"]:hover, [role="tab"]:focus{ text-decoration:none !important; }
